@@ -2,6 +2,9 @@
 import { site } from "../content/site";
 
 const contact = site.contact;
+const mailtoHref = `mailto:${site.email}?subject=${encodeURIComponent(
+  contact.mailSubject
+)}&body=${encodeURIComponent(contact.mailBody)}`;
 ---
 
 <section id="contact">
@@ -16,7 +19,7 @@ const contact = site.contact;
     <div class="contact-wrap">
       <p class="contact-lead fade" set:html={contact.leadHtml}></p>
 
-      <a class="big-mail fade d1" href={`mailto:${site.email}`}>
+      <a class="big-mail fade d1" href={mailtoHref}>
         <span class="big-mail-label">{contact.mailLabel}</span>
         <span class="big-mail-addr serif">
           {site.email} <span class="big-mail-arr" aria-hidden="true">→</span>
@@ -27,7 +30,7 @@ const contact = site.contact;
     <footer>
       <div>© {site.year} {site.brand} · {site.tagline}</div>
       <div class="footer-right">
-        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a href={mailtoHref}>{site.email}</a>
         <span aria-hidden="true">·</span>
         <a href="#top">Boven ↑</a>
       </div>

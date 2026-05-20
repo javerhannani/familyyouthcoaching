@@ -157,5 +157,8 @@ export const site = {
     leadHtml:
       "Wil je weten of coaching <em>iets voor jou of je gezin is?</em> Stuur een mailtje voor een vrijblijvende kennismaking — we kijken samen wat past.",
     mailLabel: "Stuur een bericht",
+    mailSubject: "Kennismakingsgesprek aanvragen",
+    mailBody:
+      "Hoi Fatima,\n\nIk zou graag een vrijblijvend kennismakingsgesprek inplannen.\n\nKorte introductie:\n— Voor wie: \n— Wat speelt er: \n\nMet vriendelijke groet,\n",
   },
 } as const;
