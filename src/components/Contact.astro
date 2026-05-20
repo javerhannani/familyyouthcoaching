@@ -1,0 +1,159 @@
+---
+import { site } from "../content/site";
+
+const contact = site.contact;
+---
+
+<section id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num fade">{contact.sectionNumber}</div>
+      <h2 class="sec-title serif fade d1">
+        {contact.titlePrefix}<em class="italic">{contact.titleAccent}</em>{contact.titleSuffix}
+      </h2>
+    </div>
+
+    <div class="contact-wrap">
+      <p class="contact-lead fade" set:html={contact.leadHtml}></p>
+
+      <a class="big-mail fade d1" href={`mailto:${site.email}`}>
+        <span class="big-mail-label">{contact.mailLabel}</span>
+        <span class="big-mail-addr serif">
+          {site.email} <span class="big-mail-arr" aria-hidden="true">→</span>
+        </span>
+      </a>
+    </div>
+
+    <footer>
+      <div>© {site.year} {site.brand} · {site.tagline}</div>
+      <div class="footer-right">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <span aria-hidden="true">·</span>
+        <a href="#top">Boven ↑</a>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<style>
+  #contact {
+    background: var(--ink);
+    color: var(--cream-on-dark);
+    padding-bottom: 60px;
+  }
+
+  #contact :global(.sec-title) {
+    color: var(--cream-on-dark);
+  }
+
+  #contact :global(.sec-num) {
+    color: rgba(244, 239, 229, 0.5);
+  }
+
+  .contact-wrap {
+    max-width: 980px;
+  }
+
+  .contact-lead {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 22ch;
+  }
+
+  .contact-lead :global(em) {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .big-mail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 50px;
+    padding: 34px 0 30px;
+    border-top: 1px solid rgba(244, 239, 229, 0.18);
+    border-bottom: 1px solid rgba(244, 239, 229, 0.18);
+    transition:
+      padding 0.35s ease,
+      border-color 0.35s ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .big-mail:hover {
+      padding-left: 14px;
+    }
+  }
+
+  .big-mail:hover {
+    border-color: var(--lavender);
+  }
+
+  .big-mail-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 229, 0.55);
+  }
+
+  .big-mail-addr {
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--cream-on-dark);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    transition: color 0.3s ease;
+  }
+
+  .big-mail:hover .big-mail-addr {
+    color: var(--lavender);
+  }
+
+  .big-mail-arr {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .big-mail:hover .big-mail-arr {
+    transform: translateX(8px);
+  }
+
+  footer {
+    border-top: 1px solid rgba(244, 239, 229, 0.15);
+    margin-top: 60px;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(244, 239, 229, 0.6);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  footer a {
+    transition: color 0.25s ease;
+  }
+
+  footer a:hover {
+    color: var(--lavender);
+  }
+
+  @media (max-width: 600px) {
+    footer {
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+    }
+  }
+</style>
