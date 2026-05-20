@@ -1,0 +1,264 @@
+---
+import { site } from "../content/site";
+
+const services = site.services;
+---
+
+<section id="diensten">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num fade">{services.sectionNumber}</div>
+      <h2 class="sec-title serif fade d1">
+        {services.titlePrefix}<em class="italic">{services.titleAccent}</em>{services.titleSuffix}
+      </h2>
+    </div>
+
+    <div class="services">
+      {
+        services.items.map((svc) => (
+          <article class="svc fade">
+            <div class="svc-num">{svc.number}</div>
+            <h3 class="svc-title">{svc.title}</h3>
+            <p class="svc-body" set:html={svc.body} />
+            <div class="svc-meta">
+              <span class="tag">{svc.tag}</span>
+              <span>{svc.meta}</span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="approach fade">
+      <div class="approach-quote" set:html={services.approach.quoteHtml} />
+      <div class="approach-pillars">
+        {
+          services.approach.pillars.map((p) => (
+            <div class="pillar">
+              <div class="dot" aria-hidden="true" />
+              <div>
+                <b>{p.label}</b>
+                <span>{p.description}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <ul class="usps fade" aria-label="Waarom kiezen voor Fatima Elouahmani">
+      {
+        services.approach.usps.map((usp) => (
+          <li>
+            <span class="usp-check" aria-hidden="true">✓</span>
+            <span>{usp}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  #diensten {
+    background: var(--bg-2);
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .svc {
+    display: grid;
+    grid-template-columns: 80px 1fr 1.4fr 200px;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+    transition: padding 0.35s ease;
+    position: relative;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .svc:hover {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  }
+
+  .svc::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+
+  .svc:hover::before {
+    width: 3px;
+  }
+
+  @media (max-width: 860px) {
+    .svc {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 32px 0;
+    }
+  }
+
+  .svc-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    padding-top: 6px;
+  }
+
+  .svc-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .svc-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .svc-body :global(b) {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .svc-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-top: 6px;
+  }
+
+  .svc-meta .tag {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    background: var(--bg);
+  }
+
+  /* approach card */
+  .approach {
+    margin-top: 80px;
+    padding: 60px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  @media (max-width: 760px) {
+    .approach {
+      grid-template-columns: 1fr;
+      padding: 32px;
+      gap: 24px;
+    }
+  }
+
+  .approach-quote {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .approach-quote :global(em) {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .approach-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .pillar {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+
+  .pillar .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+    transform: translateY(-2px);
+  }
+
+  .pillar b {
+    font-weight: 500;
+  }
+
+  .pillar span {
+    font-size: 14px;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* USP bullets */
+  .usps {
+    margin-top: 36px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px 32px;
+    padding: 0;
+  }
+
+  @media (max-width: 860px) {
+    .usps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .usps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .usps li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+
+  .usp-check {
+    color: var(--accent);
+    font-weight: 600;
+    flex: none;
+  }
+</style>
