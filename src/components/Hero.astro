@@ -1,0 +1,118 @@
+---
+import Marquee from "./Marquee.astro";
+import { site } from "../content/site";
+
+const hero = site.hero;
+---
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow fade">{hero.eyebrow}</div>
+    <h1 class="hero-title serif fade d1">
+      {hero.headlineLine1}<br />
+      {hero.headlineLine2Prefix}<span class="amp italic">{hero.headlineAccent}</span>
+    </h1>
+
+    <div class="hero-row">
+      <p class="hero-lede fade d2" set:html={hero.ledeHtml}></p>
+      <div class="hero-meta fade d3">
+        {
+          hero.meta.map((m) => (
+            <div>
+              <b>{m.label}</b> · {m.value}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hero-cta-row fade d4">
+      <a href={hero.primaryCta.href} class="btn btn-primary">
+        {hero.primaryCta.label} <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a href={hero.ghostCta.href} class="btn btn-ghost">{hero.ghostCta.label}</a>
+    </div>
+
+    <div class="fade">
+      <Marquee items={hero.keywords} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .hero {
+    padding: 160px 0 90px;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--ink-soft);
+    display: inline-block;
+  }
+
+  .hero-title {
+    font-size: clamp(54px, 9vw, 148px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-top: 24px;
+  }
+
+  .hero-title .amp {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-row {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+
+  @media (max-width: 860px) {
+    .hero-row {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .hero-lede {
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 46ch;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .hero-meta :global(b) {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .hero-cta-row {
+    margin-top: 50px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+</style>

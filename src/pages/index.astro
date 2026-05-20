@@ -1,15 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
 import BackToTop from "../components/BackToTop.astro";
 ---
 
 <BaseLayout>
   <Nav />
   <main>
-    <!-- Hero, About, Services, Contact volgen in latere stappen -->
-    <div style="height: 1600px;"></div>
-    <!-- ^ tijdelijke spacer om scroll-toggle te kunnen testen -->
+    <Hero />
+    <!-- About, Services, Contact volgen -->
+    <div style="height: 800px;"></div>
   </main>
   <BackToTop />
 </BaseLayout>
