@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Family & Youth Coaching — Fatima Elouahmani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7f3ec;
+    --bg-2: #efe9de;
+    --ink: #1a1815;
+    --ink-soft: #5c574e;
+    --line: #d9d2c2;
+    --accent: rgb(78, 168, 115);
+    --accent-ink: #ffffff;
+    --max: 1280px;
+    --pad: clamp(20px, 4vw, 64px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Instrument Serif', Georgia, serif; font-weight:400; letter-spacing:-0.01em;}
+  .italic{font-style:italic}
+  a{color:inherit; text-decoration:none}
+  img,svg{display:block; max-width:100%}
+  .container{max-width:var(--max); margin:0 auto; padding:0 var(--pad);}
+
+  /* NAV */
+  nav.top{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    padding:18px var(--pad);
+    display:flex; align-items:center; justify-content:space-between;
+    transition:background .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  nav.top.scrolled{
+    background:rgba(247,243,236,.82);
+    backdrop-filter:saturate(140%) blur(14px);
+    -webkit-backdrop-filter:saturate(140%) blur(14px);
+    border-bottom-color:var(--line);
+  }
+  .brand{
+    font-family:'Instrument Serif', Georgia, serif;
+    font-size:22px;
+    letter-spacing:.01em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand-mark{
+    width:24px; height:24px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #a8d9bc 0%, var(--accent) 60%, #2a5f3e 100%);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);
+  }
+  .nav-links{display:flex; gap:30px; font-size:14px; color:var(--ink-soft);}
+  .nav-links a{position:relative; padding:6px 0;}
+  .nav-links a::after{content:""; position:absolute; left:0; right:100%; bottom:2px; height:1px; background:var(--ink); transition:right .35s ease;}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{right:0}
+  .nav-cta{
+    font-size:13px; padding:9px 16px;
+    border:1px solid var(--ink); border-radius:999px;
+    transition:background .25s, color .25s;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--bg);}
+  @media (max-width:760px){ .nav-links{display:none} }
+
+  /* HERO */
+  header.hero{
+    padding: 160px var(--pad) 90px;
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .hero-eyebrow{
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex; align-items:center; gap:12px;
+  }
+  .hero-eyebrow::before{content:""; width:24px; height:1px; background:var(--ink-soft); display:inline-block}
+  .hero-title{
+    font-size: clamp(54px, 9vw, 148px);
+    line-height:.95;
+    letter-spacing:-.02em;
+    margin-top:24px;
+  }
+  .hero-title .amp{color:var(--accent); font-style:italic;}
+  .hero-row{
+    margin-top:60px;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items:end;
+  }
+  @media (max-width:860px){ .hero-row{grid-template-columns:1fr; gap:32px} }
+  .hero-lede{
+    font-size:clamp(18px,1.6vw,22px);
+    line-height:1.5;
+    color:var(--ink);
+    max-width:46ch;
+  }
+  .hero-meta{
+    display:flex; flex-direction:column; gap:10px;
+    font-size:13px; color:var(--ink-soft);
+  }
+  .hero-meta b{color:var(--ink); font-weight:500;}
+  .hero-cta-row{margin-top:50px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 22px; border-radius:999px;
+    font-size:14px; font-weight:500;
+    transition:transform .2s, background .25s, color .25s;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--ink); color:var(--bg);}
+  .btn-primary:hover{background:var(--accent)}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--bg);}
+  .btn .arrow{display:inline-block; transition:transform .25s}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* MARQUEE — keywords loop */
+  .marquee{
+    margin-top:60px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    padding:20px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track{
+    display:flex; gap:60px; width:max-content;
+    animation: marquee 42s linear infinite;
+    font-family:'Instrument Serif', Georgia, serif;
+    font-style:italic;
+    font-size: clamp(22px, 2.6vw, 34px);
+    color:var(--ink-soft);
+    white-space:nowrap;
+    letter-spacing:-.01em;
+  }
+  .marquee-track > span{display:inline-flex; align-items:center; gap:60px;}
+  .marquee-track .star{
+    color:var(--accent);
+    font-style:normal;
+    font-family:'Geist', ui-sans-serif, sans-serif;
+    font-weight:400;
+    font-size:14px;
+    transform:translateY(-2px);
+  }
+  @keyframes marquee{ to{ transform:translateX(-50%); } }
+
+  /* HERO IMAGE strip */
+  .hero-image{
+    margin-top:80px;
+    height: clamp(280px, 42vw, 560px);
+    border-radius:4px;
+    overflow:hidden;
+    position:relative;
+  }
+  .placeholder{
+    width:100%; height:100%;
+    background:
+      repeating-linear-gradient(135deg, rgba(26,24,21,.06) 0 2px, transparent 2px 14px),
+      linear-gradient(180deg, var(--bg-2), #e6dfd0);
+    display:flex; align-items:flex-end; justify-content:flex-start;
+    padding:18px 22px;
+    font-family:'Geist Mono', ui-monospace, monospace;
+    font-size:11px; color:var(--ink-soft);
+    letter-spacing:.08em;
+  }
+  .placeholder.dark{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 14px),
+      linear-gradient(180deg, #2a2424, #1a1515);
+    color:rgba(255,255,255,.55);
+  }
+
+  /* SECTION shell */
+  section{padding: 120px 0; position:relative;}
+  .sec-head{
+    display:grid; grid-template-columns: 200px 1fr; gap: 40px;
+    align-items:baseline;
+    margin-bottom:60px;
+  }
+  @media (max-width:760px){ .sec-head{grid-template-columns:1fr; gap:8px} }
+  .sec-num{
+    font-family:'Geist Mono', ui-monospace, monospace;
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .sec-title{
+    font-size: clamp(40px, 5.5vw, 78px);
+    line-height:1;
+    letter-spacing:-.02em;
+  }
+
+  /* ABOUT */
+  #about{background:var(--bg);}
+  .about-grid{
+    display:grid; grid-template-columns: 1fr;
+    max-width: 880px;
+  }
+  .about-body{display:flex; flex-direction:column; gap:24px; padding-top:8px;}
+  .about-body p{font-size:17px; line-height:1.6; color:var(--ink);}
+  .about-body p.lead{font-size:22px; line-height:1.45;}
+  .signature{
+    margin-top:14px;
+    font-family:'Instrument Serif', Georgia, serif;
+    font-style:italic; font-size:32px;
+    color:var(--accent);
+  }
+  .credentials{
+    margin-top:30px;
+    display:grid; grid-template-columns: 1fr 1fr; gap:24px;
+    border-top:1px solid var(--line); padding-top:24px;
+  }
+  .credentials .label{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px;}
+  .credentials .val{font-family:'Instrument Serif', Georgia, serif; font-size:22px;}
+
+  /* SERVICES */
+  #diensten{background:var(--bg-2);}
+  .services{
+    display:grid; grid-template-columns: 1fr; gap:0;
+    border-top:1px solid var(--line);
+  }
+  .svc{
+    display:grid;
+    grid-template-columns: 80px 1fr 1.4fr 200px;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+    transition: padding .35s ease;
+    position:relative;
+  }
+  .svc:hover{padding-left:18px; padding-right:18px;}
+  .svc::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:0;
+    background:var(--accent); transition:width .4s ease;
+  }
+  .svc:hover::before{width:3px;}
+  @media (max-width:860px){
+    .svc{grid-template-columns: 1fr; gap:14px; padding:32px 0}
+    .svc-num{font-size:14px !important}
+  }
+  .svc-num{
+    font-family:'Geist Mono', ui-monospace, monospace;
+    font-size:13px; color:var(--ink-soft);
+    letter-spacing:.08em;
+    padding-top:6px;
+  }
+  .svc-title{
+    font-family:'Instrument Serif', Georgia, serif;
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height:1.05;
+    letter-spacing:-.01em;
+  }
+  .svc-body{font-size:15px; line-height:1.6; color:var(--ink-soft);}
+  .svc-body b{color:var(--ink); font-weight:500;}
+  .svc-meta{
+    display:flex; flex-direction:column; gap:8px;
+    font-size:13px; color:var(--ink-soft);
+    padding-top:6px;
+  }
+  .svc-meta .tag{
+    display:inline-block; align-self:flex-start;
+    padding:5px 10px; border:1px solid var(--line); border-radius:999px;
+    font-size:11px; letter-spacing:.06em;
+    background:var(--bg);
+  }
+
+  /* approach quote */
+  .approach{
+    margin-top:80px;
+    padding:60px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:var(--bg);
+    display:grid; grid-template-columns: 1fr 1fr; gap:60px;
+    align-items:center;
+  }
+  @media (max-width:760px){ .approach{grid-template-columns:1fr; padding:32px; gap:24px} }
+  .approach-quote{
+    font-family:'Instrument Serif', Georgia, serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height:1.15;
+    letter-spacing:-.01em;
+  }
+  .approach-quote em{color:var(--accent);}
+  .approach-pillars{display:flex; flex-direction:column; gap:18px;}
+  .pillar{display:flex; gap:14px; align-items:baseline;}
+  .pillar .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); flex:none; transform:translateY(-2px);}
+  .pillar b{font-weight:500;}
+  .pillar span{font-size:14px; color:var(--ink-soft); display:block; margin-top:2px;}
+
+  /* CONTACT */
+  #contact{background:var(--ink); color:#f4efe5; padding-bottom:60px;}
+  #contact .sec-title{color:#f4efe5;}
+  #contact .sec-num{color:rgba(244,239,229,.5);}
+  .contact-wrap{max-width: 980px;}
+  .contact-lead{
+    font-family:'Instrument Serif', Georgia, serif;
+    font-size:clamp(28px, 3.4vw, 44px);
+    line-height:1.15;
+    letter-spacing:-.01em;
+    max-width: 22ch;
+  }
+  .contact-lead em{color: rgb(78, 168, 115); font-style:italic;}
+  .big-mail{
+    display:flex; flex-direction:column; gap:8px;
+    margin-top:50px;
+    padding:34px 0 30px;
+    border-top:1px solid rgba(244,239,229,.18);
+    border-bottom:1px solid rgba(244,239,229,.18);
+    transition: padding .35s ease, border-color .35s ease;
+  }
+  .big-mail:hover{padding-left:14px; border-color:#c8b6ed;}
+  .big-mail-label{
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:rgba(244,239,229,.55);
+  }
+  .big-mail-addr{
+    font-size: clamp(32px, 5vw, 64px);
+    line-height:1.05; letter-spacing:-.01em;
+    color:#f4efe5;
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  .big-mail:hover .big-mail-addr{color:#c8b6ed;}
+  .big-mail-arr{display:inline-block; transition:transform .3s;}
+  .big-mail:hover .big-mail-arr{transform:translateX(8px);}
+
+  footer{
+    border-top:1px solid rgba(244,239,229,.15);
+    margin-top:60px; padding:30px 0;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12px; color:rgba(244,239,229,.6);
+    letter-spacing:.06em;
+  }
+  @media (max-width:600px){ footer{flex-direction:column; gap:14px;} }
+  footer a:hover{color:#c8b6ed;}
+
+  /* fade-in */
+  .fade{opacity:0; transform:translateY(20px); transition:opacity .9s ease, transform .9s ease;}
+  .fade.in{opacity:1; transform:none;}
+  .fade.d1{transition-delay:.08s}
+  .fade.d2{transition-delay:.16s}
+  .fade.d3{transition-delay:.24s}
+  .fade.d4{transition-delay:.32s}
+
+  /* back to top */
+  .back-to-top{
+    position:fixed; right:22px; bottom:22px;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--bg);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .3s;
+    z-index:40;
+  }
+  .back-to-top.show{opacity:1; pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav">
+  <a href="#top" class="brand">
+    <span class="brand-mark"></span>
+    <span>Fatima Elouahmani</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">Over mij</a>
+    <a href="#diensten">Diensten</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Plan kennismaking</a>
+</nav>
+
+<a id="top"></a>
+
+<header class="hero">
+  <div class="hero-eyebrow fade">Family &amp; Youth Coaching · Sinds 2019</div>
+  <h1 class="hero-title serif fade d1">Family<br/>&amp; Youth <span class="amp italic">Coaching</span></h1>
+  <div class="hero-row">
+    <p class="hero-lede fade d2">
+      Praktische coaching voor jongeren van <b>12 t/m 27 jaar</b> en hun gezinnen — om zelf de regie te nemen over hun leven, hun kracht te ontdekken en hun unieke pad te bewandelen.
+    </p>
+    <div class="hero-meta fade d3">
+      <div><b>Locatie</b> · Praktijk &amp; online · Nederland</div>
+      <div><b>Talen</b> · Nederlands · Engels</div>
+      <div><b>Voor</b> · Jongeren · Ouders · Gezinnen</div>
+    </div>
+  </div>
+  <div class="hero-cta-row fade d4">
+    <a href="#contact" class="btn btn-primary">Plan een kennismaking <span class="arrow">→</span></a>
+    <a href="#diensten" class="btn btn-ghost">Bekijk diensten</a>
+  </div>
+
+  <div class="marquee fade">
+    <div class="marquee-track">
+      <span>Zelfvertrouwen <span class="star">✦</span> Verbinding <span class="star">✦</span> Regie <span class="star">✦</span> Persoonlijke groei <span class="star">✦</span> Communicatie <span class="star">✦</span> Identiteit <span class="star">✦</span> Eigen pad <span class="star">✦</span> Veilige ruimte <span class="star">✦</span></span>
+      <span>Zelfvertrouwen <span class="star">✦</span> Verbinding <span class="star">✦</span> Regie <span class="star">✦</span> Persoonlijke groei <span class="star">✦</span> Communicatie <span class="star">✦</span> Identiteit <span class="star">✦</span> Eigen pad <span class="star">✦</span> Veilige ruimte <span class="star">✦</span></span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num fade">01 — Over mij</div>
+      <h2 class="sec-title serif fade d1"><em class="italic">Even</em> kennismaken.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-body fade d2">
+        <p class="lead serif">Ik ben Fatima Elouahmani — coach voor jongeren en gezinnen die op zoek zijn naar richting, rust en verbinding.</p>
+        <p>
+          Als coach begeleid ik jongeren (12 t/m 27 jaar) en gezinnen om zelf de regie te nemen over hun leven. Samen werken we aan persoonlijke groei, zelfvertrouwen en het versterken van onderlinge relaties.
+        </p>
+        <p>
+          Ik help jongeren hun kracht te ontdekken en hun unieke pad te bewandelen — op een manier die bij hén past. Geen standaard methodes, wel echte gesprekken, praktische oefeningen en ruimte voor wat er écht speelt.
+        </p>
+        <div class="signature">Fatima Elouahmani</div>
+        <div class="credentials">
+          <div>
+            <div class="label">Specialisatie</div>
+            <div class="val serif">Jongeren &amp; Gezin</div>
+          </div>
+          <div>
+            <div class="label">Aanpak</div>
+            <div class="val serif">Persoonlijk · Praktisch</div>
+          </div>
+          <div>
+            <div class="label">Talen</div>
+            <div class="val serif">Nederlands · Engels</div>
+          </div>
+          <div>
+            <div class="label">Sinds</div>
+            <div class="val serif">2019</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diensten">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num fade">02 — Diensten</div>
+      <h2 class="sec-title serif fade d1">Wat ik <em class="italic">aanbied</em>.</h2>
+    </div>
+    <div class="services">
+      <article class="svc fade">
+        <div class="svc-num">001</div>
+        <h3 class="svc-title">Jongeren­coaching</h3>
+        <p class="svc-body">Voor jongeren van <b>12 t/m 27 jaar</b> die vastlopen, twijfelen of meer uit zichzelf willen halen. We werken aan zelfvertrouwen, identiteit, school of werk, en het maken van keuzes die echt bij jou passen.</p>
+        <div class="svc-meta">
+          <span class="tag">12 — 27 jaar</span>
+          <span>1-op-1 · Praktijk of online</span>
+        </div>
+      </article>
+      <article class="svc fade">
+        <div class="svc-num">002</div>
+        <h3 class="svc-title">Gezins­coaching</h3>
+        <p class="svc-body">Voor gezinnen die de onderlinge <b>verbinding willen versterken</b>. Samen kijken we naar communicatiepatronen, rollen en behoeftes — zodat iedereen zich weer gezien en gehoord voelt.</p>
+        <div class="svc-meta">
+          <span class="tag">Hele gezin</span>
+          <span>Op locatie of bij u thuis</span>
+        </div>
+      </article>
+      <article class="svc fade">
+        <div class="svc-num">003</div>
+        <h3 class="svc-title">Ouder­gesprekken</h3>
+        <p class="svc-body">Voor ouders die zoeken naar handvatten in de opvoeding van een puber of jongvolwassene. Een veilige plek voor reflectie, advies en concrete <b>stappen die werken</b> in jouw situatie.</p>
+        <div class="svc-meta">
+          <span class="tag">Individueel of duo</span>
+          <span>Op afspraak</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="approach fade">
+      <div class="approach-quote">
+        “Geen standaard methodes, wel <em>echte gesprekken</em> en praktische stappen die bij jou passen.”
+      </div>
+      <div class="approach-pillars">
+        <div class="pillar"><div class="dot"></div><div><b>Persoonlijk</b><span>Geen template — jouw verhaal staat centraal.</span></div></div>
+        <div class="pillar"><div class="dot"></div><div><b>Praktisch</b><span>Werkbare oefeningen, direct toepasbaar.</span></div></div>
+        <div class="pillar"><div class="dot"></div><div><b>Verbindend</b><span>Sterker als individu én als gezin.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num fade">03 — Contact</div>
+      <h2 class="sec-title serif fade d1">Laten we <em class="italic">praten</em>.</h2>
+    </div>
+    <div class="contact-wrap">
+      <p class="contact-lead fade">Wil je weten of coaching <em>iets voor jou of je gezin is?</em> Stuur een mailtje voor een vrijblijvende kennismaking — we kijken samen wat past.</p>
+
+      <a class="big-mail fade d1" href="mailto:info@familyyouthcoaching.nl">
+        <span class="big-mail-label">Stuur een bericht</span>
+        <span class="big-mail-addr serif">info@familyyouthcoaching.nl <span class="big-mail-arr">→</span></span>
+      </a>
+    </div>
+    <footer>
+      <div>© 2026 Fatima Elouahmani · Family &amp; Youth Coaching</div>
+      <div><a href="mailto:info@familyyouthcoaching.nl">info@familyyouthcoaching.nl</a> · <a href="#top">Boven ↑</a></div>
+    </footer>
+  </div>
+</section>
+
+<a href="#top" class="back-to-top" id="bttop" aria-label="Terug naar boven">↑</a>
+
+<script>
+  // sticky nav style toggle
+  const nav = document.getElementById('topnav');
+  const btt = document.getElementById('bttop');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+    btt.classList.toggle('show', window.scrollY > 600);
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // fade-ins
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
