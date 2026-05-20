@@ -24,14 +24,14 @@ export type Credential = {
 export const site = {
   brand: "Fatima Elouahmani",
   tagline: "Family & Youth Coaching",
-  email: "info@familyyouthcoaching.nl",
+  email: "info@familyyouthcoaching.com",
   year: 2026,
 
   seo: {
     title: "Family & Youth Coaching — Fatima Elouahmani",
     description:
       "Praktische coaching voor jongeren van 12 t/m 27 jaar en hun gezinnen. Oplossingsgericht, systeemgericht en holistisch — op locatie of online in Nederland.",
-    siteUrl: "https://familyyouthcoaching.nl",
+    siteUrl: "https://familyyouthcoaching.com",
     ogImage: "/og-image.png",
   },
 
