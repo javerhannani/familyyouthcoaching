@@ -1,0 +1,114 @@
+---
+import { site } from "../content/site";
+---
+
+<nav class="top" id="topnav" aria-label="Hoofdnavigatie">
+  <a href="#top" class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>{site.brand}</span>
+  </a>
+  <div class="nav-links">
+    {
+      site.nav.links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))
+    }
+  </div>
+  <a href={site.nav.cta.href} class="nav-cta">{site.nav.cta.label}</a>
+</nav>
+
+<style>
+  nav.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 18px var(--pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition:
+      background 0.35s ease,
+      border-color 0.35s ease,
+      backdrop-filter 0.35s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav.top.scrolled {
+    background: rgba(247, 243, 236, 0.82);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom-color: var(--line);
+  }
+
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #a8d9bc 0%, var(--accent) 60%, #2a5f3e 100%);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    flex: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .nav-links a {
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.25s ease;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 2px;
+    height: 1px;
+    background: var(--ink);
+    transition: right 0.35s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--ink);
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a:focus-visible::after {
+    right: 0;
+  }
+
+  .nav-cta {
+    font-size: 13px;
+    padding: 9px 16px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  @media (max-width: 760px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>

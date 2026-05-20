@@ -1,9 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import BackToTop from "../components/BackToTop.astro";
 ---
 
 <BaseLayout>
+  <Nav />
   <main>
-    <!-- step 1: empty shell — tokens, fonts, BaseLayout wired up -->
+    <!-- Hero, About, Services, Contact volgen in latere stappen -->
+    <div style="height: 1600px;"></div>
+    <!-- ^ tijdelijke spacer om scroll-toggle te kunnen testen -->
   </main>
+  <BackToTop />
 </BaseLayout>
+
+<script>
+  import "../scripts/interactions.ts";
+</script>
