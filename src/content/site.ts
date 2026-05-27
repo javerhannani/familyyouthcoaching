@@ -30,7 +30,7 @@ export const site = {
   seo: {
     title: "Family & Youth Coaching — Fatima Elouahmani",
     description:
-      "Praktische coaching voor jongeren van 12 t/m 27 jaar en hun gezinnen. Oplossingsgericht, systeemgericht en holistisch — op locatie of online in Nederland.",
+      "Coaching voor jongeren (12-27 jaar) en gezinnen. Oplossingsgericht, holistisch, systeemgericht en eclectisch — online en op locatie in Nederland.",
     siteUrl: "https://familyyouthcoaching.com",
     ogImage: "/og-image.png",
   },
@@ -52,7 +52,7 @@ export const site = {
     ledeHtml:
       "Praktische coaching voor jongeren van <b>12 t/m 27 jaar</b> en hun gezinnen — om zelf het heft in eigen handen te nemen, hun kracht te ontdekken en hun unieke pad te bewandelen.",
     meta: [
-      { label: "Locatie", value: "Praktijk & online · Nederland" },
+      { label: "Locatie", value: "Online & op locatie · Nederland" },
       { label: "Talen", value: "Nederlands · Engels" },
       { label: "Voor", value: "Jongeren · Ouders · Gezinnen" },
     ],
@@ -90,7 +90,7 @@ export const site = {
     credentials: [
       { label: "Specialisatie", value: "Jongeren & Gezin" },
       { label: "Ervaring", value: "10+ jaar jeugdzorg" },
-      { label: "Aanpak", value: "Oplossings­gericht · Holistisch" },
+      { label: "Aanpak", value: "Eclectisch · maatwerk" },
       { label: "Talen", value: "Nederlands · Engels" },
     ] as Credential[],
   },
@@ -104,9 +104,9 @@ export const site = {
       {
         number: "001",
         title: "Jongerencoaching",
-        body: "Voor jongeren van <b>12 t/m 27 jaar</b> die vastlopen, twijfelen of meer uit zichzelf willen halen. Samen werken we aan zelfbewustzijn, identiteit en eigen regie — vanuit hun waarden, wensen en kracht. Geen standaard traject: mijn coaching sluit aan bij hun tempo en belevingswereld.",
+        body: "Voor jongeren van <b>12 t/m 27 jaar</b> die vastlopen, twijfelen of meer uit zichzelf willen halen. Samen werken we aan zelfbewustzijn, identiteit en eigen regie — vanuit hun waarden, wensen en kracht. Geen standaard traject: mijn coaching sluit aan bij jou.",
         tag: "12 — 27 jaar",
-        meta: "1-op-1 · Praktijk of online",
+        meta: "1-op-1 · Online of op locatie",
       },
       {
         number: "002",
@@ -132,19 +132,23 @@ export const site = {
           description: "We focussen op wat wél werkt en zetten uitdagingen om in kansen.",
         },
         {
+          label: "Holistisch",
+          description: "Fysiek, emotioneel, mentaal én sociaal — alles weegt mee.",
+        },
+        {
           label: "Systeemgericht",
           description: "Gezin, school en omgeving horen erbij — voor duurzame verandering.",
         },
         {
-          label: "Holistisch",
-          description: "Fysiek, emotioneel, mentaal én sociaal — alles weegt mee.",
+          label: "Eclectisch",
+          description: "Geen vaste methode — ik combineer bewust wat bij jou past.",
         },
       ] as Pillar[],
       usps: [
-        "Oplossingsgericht & systeemgericht",
-        "Holistische blik op ontwikkeling",
+        "Oplossingsgericht, holistisch, systeemgericht & eclectisch",
+        "Methode-overstijgend, op maat",
         "Focus op eigen kracht & autonomie",
-        "Maatwerk voor jongere én gezin",
+        "Voor jongere én gezin",
       ],
     },
   },
